@@ -1,0 +1,32 @@
+projection;
+//strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for Zc_HEADER_15592_um //alias <alias_name>
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _item { create; }
+  use association _add { create; }
+//  use action status;
+  use action set_status;
+  use action reject;
+
+}
+
+define behavior for Zc_ITEM_15592_um //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _header;
+}
+
+define behavior for Zc_add_15592_um //alias <alias_name>
+{
+  use update;
+  use delete;
+  use association _header;
+}

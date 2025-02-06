@@ -1,0 +1,55 @@
+@Metadata.layer: #CORE
+annotate view zc_add_15592_um
+    with 
+{
+    @UI.facet: [{
+                          id     : 'Add',
+                          purpose: #STANDARD,
+                          type   : #IDENTIFICATION_REFERENCE,
+                          label  : 'Add Info',
+                          position  : 10 } ]
+                          
+ @EndUserText.label: 'Document Number'                         
+@UI.identification: [{position: 10,importance: #HIGH, label : 'Document Number' }]
+  @UI:{ lineItem: [{position: 10,importance: #HIGH, label : 'Document Number' }] }
+  @UI.selectionField: [{ position: 10 }]  
+  DocumentNumber;
+ 
+@EndUserText.label: 'House Number'  
+@UI.identification: [{position: 11,importance: #HIGH, label : 'House Number' }]
+  @UI:{ lineItem: [{position: 11,importance: #HIGH, label : 'House Number' }] }
+  @UI.selectionField: [{ position: 11 }]
+AddressNumber;
+
+ @EndUserText.label: 'Name' 
+@UI.identification: [{position: 12,importance: #HIGH, label : 'Name' }]
+  @UI:{ lineItem: [{position: 12,importance: #HIGH, label : 'Name' }] }
+  @UI.selectionField: [{ position: 12 }]
+  Name;
+
+@EndUserText.label: 'Street Address'  
+  @UI.identification: [{position: 13,importance: #HIGH, label : 'Street Address' }]
+  @UI:{ lineItem: [{position: 13,importance: #HIGH, label : 'Street Address' }] }
+  @UI.selectionField: [{ position: 13 }]
+  StreetAddress;
+ 
+ @EndUserText.label: 'City' 
+  @UI.identification: [{position: 14,importance: #HIGH, label : 'City' }]
+  @UI:{ lineItem: [{position: 14,importance: #HIGH, label : 'City' }] }
+  @UI.selectionField: [{ position: 14 }]
+  City;
+ 
+ @EndUserText.label: 'Country' 
+  @UI.identification: [{position: 15,importance: #HIGH, label : 'Country' }]
+  @UI:{ lineItem: [{position: 15,importance: #HIGH, label : 'Country' }] }
+  @UI.selectionField: [{ position: 15 }]
+  Country;
+ 
+  @EndUserText.label: 'Contact Number' 
+  @UI.identification: [{position: 16,importance: #HIGH, label : 'Contact Number' }]
+  @UI:{ lineItem: [{position: 16,importance: #HIGH, label : 'Contact Number' }] }
+  @UI.selectionField: [{ position: 16 }]
+  ContactNumber;
+  
+    
+}

@@ -1,0 +1,97 @@
+unmanaged implementation in class zbp_i_header_15592_um unique;
+//strict ( 2 );
+
+define behavior for Zi_HEADER_15592_um alias header
+//late numbering
+lock master
+authorization master ( instance )
+etag master lastLocalChangedAt
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) DocumentNumber;
+  field ( mandatory : create ) SupplierNumber;
+
+  mapping for zheader_15592_um
+    {
+      DocumentNumber     = document_number;
+      CompanyCode        = company_code;
+      PurchaseOrg        = purchase_org;
+      Currency           = currency;
+      SupplierNumber     = supplier_number;
+      Status             = status;
+      ChangedAt          = changed_at;
+      CreatedAt          = created_at;
+      CreatedBy          = created_by;
+      lastLocalChangedAt = lastlocalchangedat;
+    }
+
+
+  association _item { create; }
+  association _add { create; }
+  //  action status result [1] $self;
+  //  action (features : instance) set_status result [1] $self;
+  //  action (features : instance) reject result [1] $self;
+  action set_status result [1] $self;
+  action ( features : instance ) reject result [1] $self;
+
+
+}
+
+define behavior for Zi_ITEM_15592_um alias item
+//late numbering
+lock dependent by _header
+authorization dependent by _header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) DocumentNumber;
+  field ( mandatory : create ) ItemCode;
+
+
+  mapping for zitem_15592_um
+    {
+      DocumentNumber = document_number;
+      ItemCode       = item_code;
+      Status         = status;
+      Quantity       = quantity;
+      Currency       = currency;
+      Amount         = amount;
+      TaxAmt         = tax_amt;
+      ChangedAt      = changed_at;
+      CreatedAt      = created_at;
+      CreatedBy      = created_by;
+    }
+
+
+  association _header;
+}
+
+define behavior for zi_add_15592_um alias add
+//late numbering
+lock dependent by _header
+authorization dependent by _header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) DocumentNumber;
+  //  field ( mandatory : create ) ItemCode;
+
+
+  mapping for zadd_15592_um
+    {
+      DocumentNumber = document_number;
+      AddressNumber  = address_number;
+      Name           = name;
+      StreetAddress  = street_address;
+      City           = city;
+      Country        = country;
+      ContactNumber  = contact_number;
+    }
+
+
+  association _header;
+}

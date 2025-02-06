@@ -1,0 +1,88 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Item',
+    typeNamePlural: 'Items',
+    title: {
+      type: #STANDARD,
+      label: 'Item',
+      value: 'ItemCode'
+    }
+  }
+}
+annotate view Zc_ITEM_15592_um
+    with 
+{
+    @UI.facet: [{
+                          id     : 'Item',
+                          purpose: #STANDARD,
+                          type   : #IDENTIFICATION_REFERENCE,
+                          label  : 'Item Info',
+                          position  : 10 } ]
+ 
+ 
+  @UI.identification: [{position: 10,importance: #HIGH, label : 'Document Number' }]
+  @UI:{ lineItem: [{position: 10,importance: #HIGH, label : 'Document Number' }] }
+  @UI.selectionField: [{ position: 10 }]
+  DocumentNumber;
+ 
+ @EndUserText.label: 'Item Number' 
+  @UI.identification: [{position: 11,importance: #HIGH, label : 'Item Code' }]
+  @UI:{ lineItem: [{position: 11,importance: #HIGH, label : 'Item Code' }] }
+  @UI.selectionField: [{ position: 11 }]
+  ItemCode;
+  
+  @EndUserText.label: 'Status'
+   @UI.identification: [{position: 12,importance: #HIGH, label : 'Status'}]
+  @UI:{ lineItem: [{position: 12,importance: #HIGH, label : 'Status'}] }
+  @UI.selectionField: [{ position: 12 }]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'zcds_status_15592', element: 'Value' },
+  distinctValues: true,
+  additionalBinding: [{ localElement: 'Status',
+                        element: 'Description',
+                        usage: #FILTER_AND_RESULT }] }]
+  Status;
+ 
+ @EndUserText.label: 'Quantity' 
+  @UI.identification: [{position: 13,importance: #HIGH, label : 'Quantity' }]
+  @UI:{ lineItem: [{position: 13,importance: #HIGH, label : 'Quantity' }] }
+  @UI.selectionField: [{ position: 13 }]
+  Quantity;
+ 
+ @EndUserText.label: 'Currency' 
+  @UI.identification: [{position: 14,importance: #HIGH, label : 'Currency' }]
+  @UI:{ lineItem: [{position: 14,importance: #HIGH, label : 'Currency' }] }
+  @UI.selectionField: [{ position: 14 }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'I_CurrencyStdVH', element: 'Currency'}  }]
+  Currency;
+ 
+ @EndUserText.label: 'Amount' 
+  @UI.identification: [{position: 15,importance: #HIGH, label : 'Amount' }]
+  @UI:{ lineItem: [{position: 15,importance: #HIGH, label : 'Amount' }] }
+  @UI.selectionField: [{ position: 15 }]
+  Amount;
+ 
+ @EndUserText.label: 'Tax Amount' 
+  @UI.identification: [{position: 16,importance: #HIGH, label : 'Tax Amount' }]
+  @UI:{ lineItem: [{position: 16,importance: #HIGH, label : 'Tax Amount' }] }
+  @UI.selectionField: [{ position: 16 }]
+  TaxAmt;
+ 
+ @EndUserText.label: 'Changed At' 
+  @UI.identification: [{position: 17,importance: #HIGH, label : 'Changed At' }]
+  @UI:{ lineItem: [{position: 17,importance: #HIGH, label : 'Changed At' }] }
+  @UI.selectionField: [{ position: 17 }]
+  ChangedAt;
+ 
+ @EndUserText.label: 'Created At' 
+  @UI.identification: [{position: 18,importance: #HIGH, label : 'Created At' }]
+  @UI:{ lineItem: [{position: 18,importance: #HIGH, label : 'Created At' }] }
+  @UI.selectionField: [{ position: 18 }]
+  CreatedAt;
+  
+ @EndUserText.label: 'Created By' 
+  @UI.identification: [{position: 19,importance: #HIGH, label : 'Created By' }]
+  @UI:{ lineItem: [{position: 19,importance: #HIGH, label : 'Created By' }] }
+  @UI.selectionField: [{ position: 19 }]
+  CreatedBy;    
+}

@@ -1,0 +1,122 @@
+@Metadata.layer: #CORE
+@UI:{
+  headerInfo :{
+    typeName : 'Header',
+    typeNamePlural: 'Headers',
+    title :{
+       type: #STANDARD,
+       label: 'Header',
+       value: 'DocumentNumber'
+    }
+  }
+}
+@Search.searchable: true
+annotate view Zc_HEADER_15592_um with 
+{
+@UI.facet: [{ 
+               id :'Header',
+               purpose :#STANDARD,
+               type: #IDENTIFICATION_REFERENCE,
+               label: 'Header Info',
+               position: 10
+              },
+  { 
+               id :'Item',
+               type: #LINEITEM_REFERENCE,
+               label: 'Item Info',
+               position: 20,
+               targetElement: '_item'
+               
+              },
+  { 
+               id :'Address',
+               type: #LINEITEM_REFERENCE,
+               label: 'Address Info',
+               position: 30,
+               targetElement: '_add'
+               
+              }
+  ]
+  
+    @EndUserText.label: 'Document Number'
+ 
+  @UI.identification: [
+  {position: 10 , importance: #HIGH, label : 'Document Number' }, 
+  { type: #FOR_ACTION, dataAction: 'set_status', label: 'Approved' }
+  ]
+
+@UI: { lineItem: [
+  {position: 10 , importance: #HIGH, label : 'Document Number'},
+  { type: #FOR_ACTION, dataAction: 'set_status', label: 'Approved Document' },
+  { type: #FOR_ACTION, dataAction: 'reject', label: 'Reject Document' }
+  ]}
+//  @UI.lineItem: [
+//  {position: 10 , importance: #HIGH, label : 'Document Number'},
+//  { type: #FOR_ACTION, dataAction: 'approveDocument', label: 'Approved Document' },
+//  { type: #FOR_ACTION, dataAction: 'rejectDocument', label: 'Reject Document' }
+//  ]
+  
+  @UI.selectionField: [{ position: 10 }]
+  
+  @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.8
+  
+  DocumentNumber;
+
+  @EndUserText.label: 'Status'
+  @UI.identification: [{position: 11 , importance: #HIGH, label : 'Status' }]
+  @UI.lineItem: [{position: 11 , importance: #HIGH }]
+  @UI.selectionField: [{ position: 11 }]
+  @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.8
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'zcds_status_15592', element: 'Value' },
+  distinctValues: true,
+  additionalBinding: [{ localElement: 'Status',
+                        element: 'Description',
+                        usage: #FILTER_AND_RESULT }] }]
+  Status;
+
+  @EndUserText.label: 'Company Code'
+  @UI.identification: [{position: 12 , importance: #HIGH, label : 'Company Code' }]
+  @UI.lineItem: [{position: 12 , importance: #HIGH, label : 'Company Code' }]
+  @UI.selectionField: [{ position: 12 }]
+  CompanyCode;
+
+  @EndUserText.label: 'Purchase Organisation'
+  @UI.identification: [{position: 13 , importance: #HIGH, label : 'Purchase Organisation' }]
+  @UI.lineItem: [{position: 13 , importance: #HIGH, label : 'Purchase Organisation' }]
+  @UI.selectionField: [{ position: 13 }]
+  PurchaseOrg;
+
+  @EndUserText.label: 'Currency'
+  @UI.identification: [{position: 14 , importance: #HIGH, label : 'Currency' }]
+  @UI.lineItem: [{position: 14 , importance: #HIGH, label : 'Currency' }]
+  @UI.selectionField: [{ position: 14 }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'I_CurrencyStdVH', element: 'Currency'}  }]
+  Currency;
+
+  @EndUserText.label: 'Supplier Number'
+  @UI.identification: [{position: 15 , importance: #HIGH, label : 'Supplier Number' }]
+  @UI.lineItem: [{position: 15 , importance: #HIGH, label : 'Supplier Number' }]
+  @UI.selectionField: [{ position: 15 }]
+  @Search.defaultSearchElement: true
+  SupplierNumber;
+
+  @EndUserText.label: 'Changed At'
+  @UI.identification: [{position: 16 , importance: #HIGH, label : 'Changed At' }]
+  @UI.lineItem: [{position: 16 , importance: #HIGH, label : 'Changed At' }]
+  @UI.selectionField: [{ position: 16 }]
+  ChangedAt;
+
+  @EndUserText.label: 'Created At'
+  @UI.identification: [{position: 17 , importance: #HIGH, label : 'Created At' }]
+  @UI.lineItem: [{position: 17 , importance: #HIGH, label : 'Created At' }]
+  @UI.selectionField: [{ position: 17 }]
+  CreatedAt;
+
+  @EndUserText.label: 'Created By'
+  @UI.identification: [{position: 18 , importance: #HIGH, label : 'Created By' }]
+  @UI.lineItem: [{position: 18 , importance: #HIGH, label : 'Created By' }]
+  @UI.selectionField: [{ position: 18 }]
+  CreatedBy;
+}
